@@ -1,13 +1,11 @@
-name: CI
+name: CD
 
 on:
   push:
     branches: [master]
-  pull_request:
-    branches: [master]
 
 jobs:
-  build:
+  deply:
     runs-on: ubuntu-latest
 
     strategy:
@@ -33,11 +31,12 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Run tests and generate coverage
-        run: yarn test --coverage
-
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v1
-
       - name: Build
         run: yarn build
+
+      - name: Deploy
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
