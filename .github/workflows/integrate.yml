@@ -13,9 +13,6 @@ jobs:
         node-version: [12.x]
 
     steps:
-      - name: source check
-        run: echo ${{ github.event.pull_request.head.sha }}
-
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
