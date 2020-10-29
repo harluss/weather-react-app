@@ -6,7 +6,6 @@ const App = () => {
 	return (
 		<Container className='my-4'>
 			<SearchForm />
-			<p>Raining cats and dogs...</p>
 		</Container>
 	);
 };

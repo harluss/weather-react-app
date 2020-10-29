@@ -87,7 +87,7 @@ const SearchForm = () => {
 				</Form.Row>
 				<Form.Row className='justify-content-center'>
 					<Button variant='outline-primary' type='submit'>
-						Submit
+						Check
 					</Button>
 				</Form.Row>
 			</Form>
