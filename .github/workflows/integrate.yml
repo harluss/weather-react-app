@@ -35,7 +35,7 @@ jobs:
       - name: Run ESLint
         run: yarn lint
 
-      - name: Run tests and generate coverage
+      - name: Run tests
         run: yarn test --watchAll=false
 
       - name: Build
