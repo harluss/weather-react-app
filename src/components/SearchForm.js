@@ -18,7 +18,7 @@ const SearchForm = () => {
 		}
 
 		setValidated(true);
-		console.log(location);
+		console.log(location); // eslint-disable-line
 
 		if (form.checkValidity() === true) {
 			setLocation(initialLocation);

@@ -5,7 +5,8 @@ on:
     branches: [master]
 
 jobs:
-  deply:
+  build:
+    name: Test and Build
     runs-on: ubuntu-latest
 
     strategy:
@@ -31,8 +32,35 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
+      - name: Run tests and generate coverage
+        run: yarn test --coverage --watchAll=false
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+
       - name: Build
         run: yarn build
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: build
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: build
+          path: build
 
       - name: Deploy
         uses: w9jds/firebase-action@master
