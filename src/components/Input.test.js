@@ -17,29 +17,25 @@ describe('Input component', () => {
   it('displays correct label', async () => {
     render(<Input {...testProps} />);
 
-    const label = await screen.findByText(testProps.label);
-    expect(label).toBeInTheDocument();
+    expect(await screen.findByText(testProps.label)).toBeInTheDocument();
   });
 
   it('has a default type of text', async () => {
     render(<Input {...testProps} />);
 
-    const input = await screen.findByLabelText(testProps.label);
-    expect(input).toHaveAttribute('type', 'text');
+    expect(await screen.findByLabelText(testProps.label)).toHaveAttribute('type', 'text');
   });
 
   it('does not show required message after render', () => {
     render(<Input {...testProps} />);
 
-    const validation = screen.queryByText(/required/i);
-    expect(validation).not.toBeInTheDocument();
+    expect(screen.queryByText(/required/i)).not.toBeInTheDocument();
   });
 
   it('displays required message correctly', async () => {
     const validationError = { touched: { city: true }, errors: { city: 'Required' } };
     render(<Input {...testProps} {...validationError} />);
 
-    const validationMessage = await screen.findByText(/required/i);
-    expect(validationMessage).toBeInTheDocument();
+    expect(await screen.findByText(/required/i)).toBeInTheDocument();
   });
 });
