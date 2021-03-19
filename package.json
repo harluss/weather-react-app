@@ -23,7 +23,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "postinstall": "husky install",
-    "netlify": "ntl dev"
+    "netlify": "ntl dev",
+    "lint": "eslint src/**"
   },
   "lint-staged": {
     "src/**/*.{js,ts,json}": [
