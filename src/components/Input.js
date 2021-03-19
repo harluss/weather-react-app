@@ -1,19 +1,23 @@
+import { forwardRef } from 'react';
 import PropTypes from 'prop-types';
+import { locationShape, locationShapeBoolean } from 'types';
 
-const Input = ({ label, id, name, type = 'text', ...rest }) => {
+const Input = forwardRef(({ label, name, type = 'text', touched, errors, ...rest }, ref) => {
   return (
     <div>
-      <label htmlFor={id}>{label}</label>
-      <input type={type} id={id} name={name} {...rest} />
+      <label htmlFor={name}>{label}</label>
+      <input type={type} name={name} {...rest} ref={ref} />
+      {touched[name] && errors[name]}
     </div>
   );
-};
+});
 
 Input.propTypes = {
   label: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   type: PropTypes.string,
+  touched: PropTypes.shape(locationShapeBoolean),
+  errors: PropTypes.shape(locationShape),
 };
 
 export default Input;

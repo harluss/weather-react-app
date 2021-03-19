@@ -10,6 +10,8 @@ exports.handler = async (event, context, cb) => {
     };
   }
 
+  //trim values for city and country
+
   const { city } = JSON.parse(event.body);
 
   return {
