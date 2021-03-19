@@ -8,8 +8,7 @@ const Form = ({ fetchForecast }) => {
   const { errors, handleBlur, handleChange, handleReset, handleSubmit, touched, values, setFieldValue } = useFormik({
     initialValues: initialLocation,
     onSubmit: (values) => {
-      console.log(values);
-      fetchForecast(values.city.trim());
+      fetchForecast(values);
       handleReset();
     },
     validationSchema: locationValidationSchema,

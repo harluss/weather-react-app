@@ -50,6 +50,6 @@ describe('Form component', () => {
     expect(await screen.findByLabelText(/city/i)).toHaveValue('');
     expect(await screen.findByLabelText(/country/i)).toHaveValue('');
     expect(mockFetchFunc).toHaveBeenCalledTimes(1);
-    expect(mockFetchFunc).toHaveBeenCalledWith(data.city);
+    expect(mockFetchFunc).toHaveBeenCalledWith(data);
   });
 });
