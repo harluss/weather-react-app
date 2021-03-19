@@ -6,7 +6,7 @@ const Input = forwardRef(({ label, name, type = 'text', touched, errors, ...rest
   return (
     <div>
       <label htmlFor={name}>{label}</label>
-      <input type={type} name={name} {...rest} ref={ref} />
+      <input type={type} id={name} name={name} {...rest} ref={ref} />
       {touched[name] && errors[name]}
     </div>
   );
