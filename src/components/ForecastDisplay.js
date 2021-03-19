@@ -1,25 +1,19 @@
 import PropTypes from 'prop-types';
 
-// const ForecastShape = {
-//   city: PropTypes.string,
-//   country: PropTypes.string,
-// };
-
 const ForecastDisplay = ({ error, forecast, isLoading }) => {
   return (
     <div>
       <p>forecast</p>
       {isLoading && <p>Loading...</p>}
-      {forecast && <p>{forecast}</p>}
-      {error && <p>{error.message}</p>}
+      {forecast && <p>{JSON.stringify(forecast, null, 2)}</p>}
+      {error && <p>{error}</p>}
     </div>
   );
 };
 
 ForecastDisplay.propTypes = {
   error: PropTypes.string,
-  // forecast: PropTypes.shape(ForecastShape),
-  forecast: PropTypes.string,
+  forecast: PropTypes.object,
   isLoading: PropTypes.bool,
 };
 
