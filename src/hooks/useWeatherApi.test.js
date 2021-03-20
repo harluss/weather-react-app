@@ -39,7 +39,7 @@ describe('useWeatherApi hook', () => {
   });
 
   it('handles error state correctly', async () => {
-    const errorResponse = new Error(`No weather data for ${location.city} (${location.country}) found`);
+    const errorResponse = new Error(`No data found for ${location.city}, ${location.country}`);
     axios.post.mockRejectedValue(errorResponse);
     const { result, waitForNextUpdate } = renderHook(() => useWeatherApi());
 
