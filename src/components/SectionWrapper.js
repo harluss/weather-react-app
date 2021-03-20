@@ -3,7 +3,6 @@ import styled, { css } from 'styled-components';
 export const SectionWrapper = styled.div`
   width: 50%;
   height: 100%;
-  margin: 1px;
   padding: 20px;
   display: flex;
   flex-direction: column;

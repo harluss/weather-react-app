@@ -15,11 +15,12 @@ Main purpose of this project is to start learning React by creating simple Weath
   - pre-commit: linting with ESLint and Prettier
   - pre-push: tests
 - Tests with React Testing Library and Jest
-- Styled Components
 - Custom hook for fetching data with Axios
 - Netlify serverless function to call external weather API
 - Netlify deployment
 - CI workflow with GitHub Actions (lint, test, build)
+- Styling with Styled Components
+- Form handling with Formik
 
 ### Setup
 
