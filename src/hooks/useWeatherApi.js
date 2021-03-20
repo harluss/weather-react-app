@@ -14,7 +14,7 @@ const useWeatherApi = () => {
       setForecast(data);
     } catch (error) {
       console.log(error);
-      setError(`No weather data for ${city} (${country}) found`);
+      setError(`No data found for ${city}, ${country}`);
     }
 
     setIsLoading(false);
