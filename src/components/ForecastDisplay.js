@@ -1,6 +1,8 @@
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { SectionWrapper } from 'components/SectionWrapper';
+import { theme } from 'styles/theme';
 
 const Temp = styled.p`
   color: ${({ theme }) => theme.colors.yellow};
@@ -20,6 +22,15 @@ const Message = styled.p`
 `;
 
 const ForecastDisplay = ({ error, forecast, isLoading }) => {
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setScreenWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   if (forecast) {
     const {
       weather: [{ description }],
@@ -33,9 +44,9 @@ const ForecastDisplay = ({ error, forecast, isLoading }) => {
         <Description>
           {name}, {country}
         </Description>
+        <Description>{description}</Description>
         <Temp>{temp}℃</Temp>
         <Description>Feels like: {feels_like}℃</Description>
-        <Description>{description}</Description>
       </SectionWrapper>
     );
   }
@@ -44,7 +55,7 @@ const ForecastDisplay = ({ error, forecast, isLoading }) => {
     <SectionWrapper second>
       {isLoading && <Message>Checking...</Message>}
       {error && <Message>{error}</Message>}
-      {!isLoading && !error && <Message>👈 Provide location</Message>}
+      {!isLoading && !error && <Message>{screenWidth > theme.sizes.tablet ? '👈' : '👆'} Provide location</Message>}
     </SectionWrapper>
   );
 };

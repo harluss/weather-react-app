@@ -21,7 +21,7 @@ export const SectionWrapper = styled.div`
       background-color: ${({ theme }) => theme.colors.blue};
     `};
 
-  @media (max-width: ${({ theme }) => theme.sizes.tablet}) {
+  @media (max-width: ${({ theme }) => `${theme.sizes.tablet}px`}) {
     width: 100%;
     height: 50%;
     ${({ first }) =>
