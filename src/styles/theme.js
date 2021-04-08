@@ -9,6 +9,6 @@ export const theme = {
     yellow: '#FFDE03',
   },
   sizes: {
-    tablet: '768px',
+    tablet: 768,
   },
 };
